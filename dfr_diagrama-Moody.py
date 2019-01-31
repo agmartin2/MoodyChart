@@ -233,6 +233,7 @@ for i in range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax
 ax.yaxis.set_minor_locator(ticker.FixedLocator(np.asarray(yminor_list)))
 ax.yaxis.set_minor_formatter(ticker.FixedFormatter(yminor_tags))
 
+# Zona de regimen laminar
 ax.annotate("",
             xy = (Re_lam_low,9e-3),
             xytext=(Re_cri_low,9e-3),
@@ -246,6 +247,8 @@ ax.annotate("Laminar",
             verticalalignment='bottom',
             fontsize=8,
 )
+
+# Zona critica de transicion de laminar a turbulento
 ax.annotate("",
             xy = (Re_cri_low,9e-3),
             xytext=(Re_cri_high,9e-3),
@@ -259,6 +262,8 @@ ax.annotate("Critico",
             verticalalignment='bottom',
             fontsize=8,
 )
+
+# Zona turbulenta
 ax.annotate("",
             xy = (Re_cri_low,9e-3),
             xytext=(Re_cri_high,9e-3),
@@ -276,6 +281,7 @@ ax.annotate("Turbulento",
                             linewidth=0.3)
 )
 
+# Zona de turbulencia completa
 ax.annotate("",
             xy = (1e5,6e-2),
             xytext=(Re_plotmax,6e-2),
@@ -290,6 +296,7 @@ ax.annotate("Turbulencia completa",
             fontsize=8,
 )
 
+# Ploteando ...
 plt.subplots_adjust(left=1,right=2)
 plt.show()
 texfig.savefig("example_plot", bbox_inches = 'tight')
