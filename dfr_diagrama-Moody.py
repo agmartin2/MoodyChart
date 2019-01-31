@@ -264,12 +264,6 @@ ax.annotate("Critico",
 )
 
 # Zona turbulenta
-ax.annotate("",
-            xy = (Re_cri_low,9e-3),
-            xytext=(Re_cri_high,9e-3),
-            arrowprops=dict(facecolor='black',
-                            arrowstyle="<->",
-                            linewidth=0.3))
 ax.annotate("Turbulento",
             xy = (Re_cri_high,9e-3),
             xytext=(np.sqrt(Re_cri_high*Re_trb_max),9e-3),
@@ -297,7 +291,6 @@ ax.annotate("Turbulencia completa",
 )
 
 # Ploteando ...
-plt.subplots_adjust(left=1,right=2)
 plt.show()
 texfig.savefig("example_plot", bbox_inches = 'tight')
 
