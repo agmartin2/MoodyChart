@@ -105,7 +105,7 @@ fig = texfig.figure()
 
 # Set size
 fig.set_size_inches(11.69,8.27)
-#fig.set_tight_layout('none')
+fig.set_size_inches(9.35,6.62)
 
 # Get a reference to the coordinate axes object. Important.
 # Some commands need it (can also be done by declaring a single subplot)
@@ -120,9 +120,9 @@ plt.ylim(f_plotmin,f_plotmax)
 
 ax.set_xlabel("Reynolds number ($\\textsl{Re}$)")
 ax.set_ylabel("Friction coefficient ($f$)")
-ax.text(3*Re_plotmax,np.sqrt(f_plotmin*f_plotmax),
+ax.text(2*Re_plotmax,np.sqrt(f_plotmin*f_plotmax),
         "Relative roughness ($rr = e/D$)",
-        fontsize=6,
+        fontsize=10,
         VerticalAlignment="center",
         rotation=90)
 
@@ -244,7 +244,7 @@ ax.annotate("Laminar",
             xytext=(np.sqrt(Re_lam_low*Re_cri_low),9e-3),
             horizontalalignment='center',
             verticalalignment='bottom',
-            fontsize=6,
+            fontsize=8,
 )
 ax.annotate("",
             xy = (Re_cri_low,9e-3),
@@ -257,7 +257,7 @@ ax.annotate("Critico",
             xytext=(np.sqrt(Re_cri_low*Re_cri_high),9e-3),
             horizontalalignment='center',
             verticalalignment='bottom',
-            fontsize=6,
+            fontsize=8,
 )
 ax.annotate("",
             xy = (Re_cri_low,9e-3),
@@ -270,7 +270,7 @@ ax.annotate("Turbulento",
             xytext=(np.sqrt(Re_cri_high*Re_trb_max),9e-3),
             horizontalalignment='center',
             verticalalignment='center',
-            fontsize=6,
+            fontsize=8,
             arrowprops=dict(facecolor='black',
                             arrowstyle="->",
                             linewidth=0.3)
@@ -287,12 +287,12 @@ ax.annotate("Turbulencia completa",
             xytext=(np.sqrt(1e5*Re_plotmax),6e-2),
             horizontalalignment='center',
             verticalalignment='bottom',
-            fontsize=6,
+            fontsize=8,
 )
 
 plt.subplots_adjust(left=1,right=2)
 plt.show()
-texfig.savefig("example_plot")
+texfig.savefig("example_plot", bbox_inches = 'tight')
 
 # plt.show()
 # plt.savefig("kk.pdf", bbox_inches='tight')
