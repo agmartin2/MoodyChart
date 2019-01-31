@@ -105,6 +105,7 @@ fig = texfig.figure()
 
 # Set size
 fig.set_size_inches(11.69,8.27)
+#fig.set_tight_layout('none')
 
 # Get a reference to the coordinate axes object. Important.
 # Some commands need it (can also be done by declaring a single subplot)
@@ -232,8 +233,12 @@ for i in range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax
 ax.yaxis.set_minor_locator(ticker.FixedLocator(np.asarray(yminor_list)))
 ax.yaxis.set_minor_formatter(ticker.FixedFormatter(yminor_tags))
 
-ax.annotate("",xy = (Re_lam_low,9e-3),xytext=(Re_cri_low,9e-3),
-            arrowprops=dict(facecolor='black', arrowstyle="<->",linewidth=0.3))
+ax.annotate("",
+            xy = (Re_lam_low,9e-3),
+            xytext=(Re_cri_low,9e-3),
+            arrowprops=dict(facecolor='black',
+                            arrowstyle="<->",
+                            linewidth=0.3))
 ax.annotate("Laminar",
             xy = (Re_lam_low,9e-3),
             xytext=(np.sqrt(Re_lam_low*Re_cri_low),9e-3),
@@ -241,8 +246,12 @@ ax.annotate("Laminar",
             verticalalignment='bottom',
             fontsize=6,
 )
-ax.annotate("",xy = (Re_cri_low,9e-3),xytext=(Re_cri_high,9e-3),
-            arrowprops=dict(facecolor='black', arrowstyle="<->",linewidth=0.3))
+ax.annotate("",
+            xy = (Re_cri_low,9e-3),
+            xytext=(Re_cri_high,9e-3),
+            arrowprops=dict(facecolor='black',
+                            arrowstyle="<->",
+                            linewidth=0.3))
 ax.annotate("Critico",
             xy = (Re_lam_low,9e-3),
             xytext=(np.sqrt(Re_cri_low*Re_cri_high),9e-3),
@@ -250,19 +259,29 @@ ax.annotate("Critico",
             verticalalignment='bottom',
             fontsize=6,
 )
-ax.annotate("",xy = (Re_cri_low,9e-3),xytext=(Re_cri_high,9e-3),
-            arrowprops=dict(facecolor='black', arrowstyle="<->",linewidth=0.3))
+ax.annotate("",
+            xy = (Re_cri_low,9e-3),
+            xytext=(Re_cri_high,9e-3),
+            arrowprops=dict(facecolor='black',
+                            arrowstyle="<->",
+                            linewidth=0.3))
 ax.annotate("Turbulento",
             xy = (Re_cri_high,9e-3),
             xytext=(np.sqrt(Re_cri_high*Re_trb_max),9e-3),
             horizontalalignment='center',
             verticalalignment='center',
             fontsize=6,
-            arrowprops=dict(facecolor='black', arrowstyle="->",linewidth=0.3)
+            arrowprops=dict(facecolor='black',
+                            arrowstyle="->",
+                            linewidth=0.3)
 )
 
-ax.annotate("",xy = (1e5,6e-2),xytext=(Re_plotmax,6e-2),
-            arrowprops=dict(facecolor='black', arrowstyle="<->",linewidth=0.3))
+ax.annotate("",
+            xy = (1e5,6e-2),
+            xytext=(Re_plotmax,6e-2),
+            arrowprops=dict(facecolor='black',
+                            arrowstyle="<->",
+                            linewidth=0.3))
 ax.annotate("Turbulencia completa",
             xy = (1e5,6e-2),
             xytext=(np.sqrt(1e5*Re_plotmax),6e-2),
@@ -271,8 +290,10 @@ ax.annotate("Turbulencia completa",
             fontsize=6,
 )
 
-plt.plot()
+plt.subplots_adjust(left=1,right=2)
+plt.show()
 texfig.savefig("example_plot")
 
 # plt.show()
 # plt.savefig("kk.pdf", bbox_inches='tight')
+#plt.margins(0.1,0.5)
