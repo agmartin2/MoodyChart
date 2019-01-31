@@ -17,13 +17,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import numpy as np
+# import texfig first to configure Matplotlib's backend
+import texfig
+# then, import PyPlot
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.ticker as ticker
+
+
 # matplotlib.use('pgf')
 # import matplotlib as mpl
 # mpl.use("pgf")
-
+#
 # pgf_with_pdflatex = {
 #     "pgf.texsystem": "pdflatex",
 #     "pgf.preamble": [
@@ -93,13 +98,17 @@ rr = [
     [8e-2, 1]
 ]
 
+# ======== Now the figure object handling ==================
+
 # Creating the figure object
-fig = plt.figure()
+fig = texfig.figure()
+
+# Set size
+fig.set_size_inches(11.69,8.27)
 
 # Get a reference to the coordinate axes object. Important.
 # Some commands need it (can also be done by declaring a single subplot)
 ax = plt.gca()
-fig.set_size_inches(11.69,8.27)
 
 plt.xscale('log')
 plt.yscale('log')
@@ -108,10 +117,10 @@ plt.yscale('log')
 plt.xlim(Re_plotmin,Re_plotmax)
 plt.ylim(f_plotmin,f_plotmax)
 
-ax.set_xlabel("Reynolds number (Re)")
-ax.set_ylabel("Friction coefficient (f)")
+ax.set_xlabel("Reynolds number ($\\textsl{Re}$)")
+ax.set_ylabel("Friction coefficient ($f$)")
 ax.text(3*Re_plotmax,np.sqrt(f_plotmin*f_plotmax),
-        "Relative roughness (rr = e/D)",
+        "Relative roughness ($rr = e/D$)",
         fontsize=6,
         VerticalAlignment="center",
         rotation=90)
@@ -167,7 +176,7 @@ ax.tick_params(which='minor',labelsize=6)
 # Ploting vertical grid and Re labels
 xmajor_list = range(int(np.floor(np.log10(Re_plotmin))),int(np.ceil(np.log10(Re_plotmax)))+1)
 ax.xaxis.set_major_locator(ticker.FixedLocator(map(lambda x: 10**x, xmajor_list)))
-ax.xaxis.set_major_formatter(ticker.FixedFormatter(map(lambda x: format("10^%s" % x), xmajor_list)))
+ax.xaxis.set_major_formatter(ticker.FixedFormatter(map(lambda x: format("$10^{%s}$" % x), xmajor_list)))
 # xmajor_list = np.array([])
 xminor_list = []
 xminor_tags = []
@@ -198,7 +207,7 @@ ax.xaxis.set_minor_formatter(ticker.FixedFormatter(xminor_tags))
 # Ploting horizontal grid and f labels
 ymajor_list = range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax)))+1)
 ax.yaxis.set_major_locator(ticker.FixedLocator(map(lambda x: 10**x, ymajor_list)))
-ax.yaxis.set_major_formatter(ticker.FixedFormatter(map(lambda x: format("10^%s" % x), ymajor_list)))
+ax.yaxis.set_major_formatter(ticker.FixedFormatter(map(lambda x: format("$10^{%s}$" % x), ymajor_list)))
 yminor_list = []
 yminor_tags = []
 for i in range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax)))+1):
@@ -262,6 +271,8 @@ ax.annotate("Turbulencia completa",
             fontsize=6,
 )
 
+plt.plot()
+texfig.savefig("example_plot")
 
-plt.show()
+# plt.show()
 # plt.savefig("kk.pdf", bbox_inches='tight')
