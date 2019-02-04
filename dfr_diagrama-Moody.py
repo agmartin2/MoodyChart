@@ -25,19 +25,6 @@ import matplotlib.patches as patches
 import matplotlib.ticker as ticker
 
 
-# matplotlib.use('pgf')
-# import matplotlib as mpl
-# mpl.use("pgf")
-#
-# pgf_with_pdflatex = {
-#     "pgf.texsystem": "pdflatex",
-#     "pgf.preamble": [
-#          r"\usepackage[utf8x]{inputenc}",
-#          r"\usepackage[T1]{fontenc}",
-#          r"\usepackage{cmbright}",
-#          ]
-# }
-# mpl.rcParams.update(pgf_with_pdflatex)
 
 def Colebrook_getf_iterate (Re,rr):
     f_seed = 0.04
@@ -294,6 +281,10 @@ ax.annotate("Turbulencia completa",
 plt.show()
 texfig.savefig("example_plot", bbox_inches = 'tight')
 
+# ======== Old commands used for tests ========
 # plt.show()
 # plt.savefig("kk.pdf", bbox_inches='tight')
 #plt.margins(0.1,0.5)
+# plt.style.use('grayscale')
+# plt.gray()
+# plt.plot()
