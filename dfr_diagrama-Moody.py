@@ -93,6 +93,8 @@ CTurbulence_Region_Label_fpos = 6e-2
 
 # ======== Now the figure object handling ==================
 
+# plt.style.use('grayscale')
+
 # Creating the figure object
 fig = texfig.figure()
 
