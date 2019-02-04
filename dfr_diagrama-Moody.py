@@ -85,6 +85,12 @@ rr = [
     [8e-2, 1]
 ]
 
+# Vertical location of some arrows and labels
+Flow_Region_Arrow_fpos = 9e-3
+Flow_Region_Label_fpos = 9.1e-3
+CTurbulence_Region_Arrow_fpos = 6e-2
+CTurbulence_Region_Label_fpos = 6e-2
+
 # ======== Now the figure object handling ==================
 
 # Creating the figure object
@@ -220,16 +226,18 @@ for i in range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax
 ax.yaxis.set_minor_locator(ticker.FixedLocator(np.asarray(yminor_list)))
 ax.yaxis.set_minor_formatter(ticker.FixedFormatter(yminor_tags))
 
+# Annotate regions with different flow types.
+
 # Zona de regimen laminar
 ax.annotate("",
-            xy = (Re_lam_low,9e-3),
-            xytext=(Re_cri_low,9e-3),
+            xy = (Re_lam_low,Flow_Region_Arrow_fpos),
+            xytext=(Re_cri_low,Flow_Region_Arrow_fpos),
             arrowprops=dict(facecolor='black',
                             arrowstyle="<->",
                             linewidth=0.3))
 ax.annotate("Laminar",
-            xy = (Re_lam_low,9.1e-3),
-            xytext=(np.sqrt(Re_lam_low*Re_cri_low),9.1e-3),
+            xy = (Re_lam_low,Flow_Region_Label_fpos),
+            xytext=(np.sqrt(Re_lam_low*Re_cri_low),Flow_Region_Label_fpos),
             horizontalalignment='center',
             verticalalignment='bottom',
             fontsize=8,
@@ -237,14 +245,14 @@ ax.annotate("Laminar",
 
 # Zona critica de transicion de laminar a turbulento
 ax.annotate("",
-            xy = (Re_cri_low,9e-3),
-            xytext=(Re_cri_high,9e-3),
+            xy = (Re_cri_low,Flow_Region_Arrow_fpos),
+            xytext=(Re_cri_high,Flow_Region_Arrow_fpos),
             arrowprops=dict(facecolor='black',
                             arrowstyle="<->",
                             linewidth=0.3))
 ax.annotate("Critico",
-            xy = (Re_lam_low,9.1e-3),
-            xytext=(np.sqrt(Re_cri_low*Re_cri_high),9.1e-3),
+            xy = (Re_lam_low,Flow_Region_Label_fpos),
+            xytext=(np.sqrt(Re_cri_low*Re_cri_high),Flow_Region_Label_fpos),
             horizontalalignment='center',
             verticalalignment='bottom',
             fontsize=8,
@@ -252,8 +260,8 @@ ax.annotate("Critico",
 
 # Zona turbulenta
 ax.annotate("Turbulento",
-            xy = (Re_cri_high,9e-3),
-            xytext=(np.sqrt(Re_cri_high*Re_trb_max),9e-3),
+            xy = (Re_cri_high,Flow_Region_Arrow_fpos),
+            xytext=(np.sqrt(Re_cri_high*Re_trb_max),Flow_Region_Arrow_fpos),
             horizontalalignment='center',
             verticalalignment='center',
             fontsize=8,
@@ -264,14 +272,14 @@ ax.annotate("Turbulento",
 
 # Zona de turbulencia completa
 ax.annotate("",
-            xy = (1e5,6e-2),
-            xytext=(Re_plotmax,6e-2),
+            xy = (1e5,CTurbulence_Region_Arrow_fpos),
+            xytext=(Re_plotmax,CTurbulence_Region_Arrow_fpos),
             arrowprops=dict(facecolor='black',
                             arrowstyle="<->",
                             linewidth=0.3))
 ax.annotate("Turbulencia completa",
-            xy = (1e5,6e-2),
-            xytext=(np.sqrt(1e5*Re_plotmax),6e-2),
+            xy = (1e5,CTurbulence_Region_Label_fpos),
+            xytext=(np.sqrt(1e5*Re_plotmax),CTurbulence_Region_Label_fpos),
             horizontalalignment='center',
             verticalalignment='bottom',
             fontsize=8,
