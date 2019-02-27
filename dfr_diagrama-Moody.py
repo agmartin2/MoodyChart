@@ -230,7 +230,7 @@ ax.yaxis.set_minor_formatter(ticker.FixedFormatter(yminor_tags))
 
 # Annotate regions with different flow types.
 
-# Zona de regimen laminar
+# Laminar flow region
 ax.annotate("",
             xy = (Re_lam_low,Flow_Region_Arrow_fpos),
             xytext=(Re_cri_low,Flow_Region_Arrow_fpos),
@@ -245,7 +245,7 @@ ax.annotate("Laminar",
             fontsize=8,
 )
 
-# Zona critica de transicion de laminar a turbulento
+# Critical region for transition to laminar to turbulent flow
 ax.annotate("",
             xy = (Re_cri_low,Flow_Region_Arrow_fpos),
             xytext=(Re_cri_high,Flow_Region_Arrow_fpos),
@@ -260,7 +260,7 @@ ax.annotate("Critico",
             fontsize=8,
 )
 
-# Zona turbulenta
+# Turbulent flow region
 ax.annotate("Turbulento",
             xy = (Re_cri_high,Flow_Region_Arrow_fpos),
             xytext=(np.sqrt(Re_cri_high*Re_trb_max),Flow_Region_Arrow_fpos),
@@ -272,7 +272,7 @@ ax.annotate("Turbulento",
                             linewidth=0.3)
 )
 
-# Zona de turbulencia completa
+# Fully developed turbulence region
 ax.annotate("",
             xy = (1e5,CTurbulence_Region_Arrow_fpos),
             xytext=(Re_plotmax,CTurbulence_Region_Arrow_fpos),
@@ -287,7 +287,7 @@ ax.annotate("Turbulencia completa",
             fontsize=8,
 )
 
-# Ploteando ...
+# Plotting ...
 plt.show()
 texfig.savefig("example_plot", bbox_inches = 'tight')
 
