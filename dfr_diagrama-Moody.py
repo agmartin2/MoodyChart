@@ -58,6 +58,7 @@ Re_trb_min  = 3000
 Re_trb_max  = Re_plotmax
 
 Re = np.logspace(np.log10(Re_plotmin), np.log10(Re_plotmax), num=200)
+# rr [[a,b]] a: relative roughness, b: plot starting point
 rr = [
     [0, 1],
     [1e-6, 2e3],
