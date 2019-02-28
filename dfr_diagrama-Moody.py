@@ -172,7 +172,8 @@ for thisrr in rr:
         # f value for Re_plotmax in this rr line
         Moody_line_f4Re_max = Moody_line[-1]
         if ( ( Moody_line_f4Re_max > f_plotmin ) &
-             ( Moody_line_f4Re_max < f_plotmax)):
+             ( Moody_line_f4Re_max < f_plotmax) &
+             ( my_rr != 0 )):
             my_rr_exp = np.floor(np.log10(my_rr)) # The exponent
             my_rr_num = my_rr/(10**my_rr_exp)     # The number (significand)
             print my_rr, my_rr_num, my_rr_exp
