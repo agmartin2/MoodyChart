@@ -148,8 +148,10 @@ for thisrr in rr:
     if my_Re.size > 0:
         Moody_line = Colebrook_getf_iterate(my_Re,my_rr)
         line, = plt.plot(my_Re, Moody_line, lw=1)
-        Moody_line_min = Moody_line[-1]
-        if Moody_line_min > f_plotmin:
+        # f value for Re_plotmax in this rr line
+        Moody_line_f4Re_max = Moody_line[-1]
+        if ( ( Moody_line_f4Re_max > f_plotmin ) &
+             ( Moody_line_f4Re_max < f_plotmax)):
             ax.text(1.1*Re_plotmax,Moody_line.min(),my_rr,fontsize=6)
     else:
         print "Skipping relative roughness: ", my_rr
