@@ -92,7 +92,7 @@ rr = [
 # The different labels.
 x1_label = "Reynolds number ($\\textsl{Re}$)"
 y1_label = "Friction coefficient ($f$)"
-y2_label = "Relative roughness ($rr = e/D$)"
+y2_label = "Relative roughness ($\\epsilon_\\mathrm{rel}^{} = \\epsilon/D$)"
 Laminar_Region_label = "Laminar"
 Critical_Region_label = "Critico"
 Turbulent_Region_label = "Turbulento"
