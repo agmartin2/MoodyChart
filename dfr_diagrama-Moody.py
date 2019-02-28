@@ -83,7 +83,10 @@ rr = [
     [5e-2, 1],
     [6e-2, 1],
     [7e-2, 1],
-    [8e-2, 1]
+    [8e-2, 1],
+    [1e-1, 1],
+    [1.2e-1, 1],
+    [1.5e-1, 1]
 ]
 
 # Vertical location of some arrows and labels
