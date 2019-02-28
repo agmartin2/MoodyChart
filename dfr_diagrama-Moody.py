@@ -89,14 +89,26 @@ rr = [
     [1.5e-1, 1]
 ]
 
-# The different labels.
-x1_label = "Reynolds number ($\\textsl{Re}$)"
-y1_label = "Friction coefficient ($f$)"
-y2_label = "Relative roughness ($\\epsilon_\\mathrm{rel}^{} = \\epsilon/D$)"
-Laminar_Region_label = "Laminar"
-Critical_Region_label = "Critico"
-Turbulent_Region_label = "Turbulento"
-Full_Turbulence_label = "Turbulencia completa"
+# Set language for labels
+lang = "en"
+
+# The different labels for supported languages.
+if lang == "es":
+    x1_label = "N\\'umero de Reynolds ($\\textsl{Re}$)"
+    y1_label = "Coeficiente de fricci\\'on ($f$)"
+    y2_label = "Rugosidad relativa ($\\epsilon_\\mathrm{rel}^{} = \\epsilon/D$)"
+    Laminar_Region_label = "Laminar"
+    Critical_Region_label = "Cr\\'{\\i}tico"
+    Turbulent_Region_label = "Turbulento"
+    Full_Turbulence_label = "Turbulencia completa"
+else:
+    x1_label = "Reynolds number ($\\textsl{Re}$)"
+    y1_label = "Friction coefficient ($f$)"
+    y2_label = "Relative roughness ($\\epsilon_\\mathrm{rel}^{} = \\epsilon/D$)"
+    Laminar_Region_label = "Laminar"
+    Critical_Region_label = "Critical"
+    Turbulent_Region_label = "Turbulent"
+    Full_Turbulence_label = "Complete turbulence"
 
 # Vertical location of some arrows and labels
 Flow_Region_Arrow_fpos = 9e-3
