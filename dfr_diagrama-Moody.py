@@ -173,7 +173,15 @@ for thisrr in rr:
         Moody_line_f4Re_max = Moody_line[-1]
         if ( ( Moody_line_f4Re_max > f_plotmin ) &
              ( Moody_line_f4Re_max < f_plotmax)):
-            ax.text(1.1*Re_plotmax,Moody_line.min(),my_rr,fontsize=6)
+            my_rr_exp = np.floor(np.log10(my_rr)) # The exponent
+            my_rr_num = my_rr/(10**my_rr_exp)     # The number (significand)
+            print my_rr, my_rr_num, my_rr_exp
+            if my_rr_num == 1:
+                my_rr_string = "$10^{%d}$" % my_rr_exp
+            else:
+                my_rr_string = "$%g\\!\\times\\!10^{%d}$" % (my_rr_num, my_rr_exp)
+
+            ax.text(1.1*Re_plotmax,Moody_line.min(),my_rr_string,fontsize=6)
     else:
         print "Skipping relative roughness: ", my_rr
 
