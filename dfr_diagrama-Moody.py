@@ -89,6 +89,15 @@ rr = [
     [1.5e-1, 1]
 ]
 
+# The different labels.
+x1_label = "Reynolds number ($\\textsl{Re}$)"
+y1_label = "Friction coefficient ($f$)"
+y2_label = "Relative roughness ($rr = e/D$)"
+Laminar_Region_label = "Laminar"
+Critical_Region_label = "Critico"
+Turbulent_Region_label = "Turbulento"
+Full_Turbulence_label = "Turbulencia completa"
+
 # Vertical location of some arrows and labels
 Flow_Region_Arrow_fpos = 9e-3
 Flow_Region_Label_fpos = 9.1e-3
@@ -117,10 +126,10 @@ plt.yscale('log')
 plt.xlim(Re_plotmin,Re_plotmax)
 plt.ylim(f_plotmin,f_plotmax)
 
-ax.set_xlabel("Reynolds number ($\\textsl{Re}$)")
-ax.set_ylabel("Friction coefficient ($f$)")
+ax.set_xlabel(x1_label)
+ax.set_ylabel(y1_label)
 ax.text(2*Re_plotmax,np.sqrt(f_plotmin*f_plotmax),
-        "Relative roughness ($rr = e/D$)",
+        y2_label,
         fontsize=10,
         VerticalAlignment="center",
         rotation=90)
@@ -243,7 +252,7 @@ ax.annotate("",
             arrowprops=dict(facecolor='black',
                             arrowstyle="<->",
                             linewidth=0.3))
-ax.annotate("Laminar",
+ax.annotate(Laminar_Region_label,
             xy = (Re_lam_low,Flow_Region_Label_fpos),
             xytext=(np.sqrt(Re_lam_low*Re_cri_low),Flow_Region_Label_fpos),
             horizontalalignment='center',
@@ -258,7 +267,7 @@ ax.annotate("",
             arrowprops=dict(facecolor='black',
                             arrowstyle="<->",
                             linewidth=0.3))
-ax.annotate("Critico",
+ax.annotate(Critical_Region_label,
             xy = (Re_lam_low,Flow_Region_Label_fpos),
             xytext=(np.sqrt(Re_cri_low*Re_cri_high),Flow_Region_Label_fpos),
             horizontalalignment='center',
@@ -267,7 +276,7 @@ ax.annotate("Critico",
 )
 
 # Turbulent flow region
-ax.annotate("Turbulento",
+ax.annotate(Turbulent_Region_label,
             xy = (Re_cri_high,Flow_Region_Arrow_fpos),
             xytext=(np.sqrt(Re_cri_high*Re_trb_max),Flow_Region_Arrow_fpos),
             horizontalalignment='center',
@@ -285,7 +294,7 @@ ax.annotate("",
             arrowprops=dict(facecolor='black',
                             arrowstyle="<->",
                             linewidth=0.3))
-ax.annotate("Turbulencia completa",
+ax.annotate(Full_Turbulence_label,
             xy = (1e5,CTurbulence_Region_Label_fpos),
             xytext=(np.sqrt(1e5*Re_plotmax),CTurbulence_Region_Label_fpos),
             horizontalalignment='center',
