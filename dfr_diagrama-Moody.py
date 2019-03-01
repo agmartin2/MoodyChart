@@ -154,7 +154,7 @@ line, = plt.plot(laminar_Re, 64/laminar_Re, lw=1)
 # Plot f(Re) Moody lines as for laminar flow in transition zone
 transition_Re = Re[ (Re >= Re_lam_high)  & (Re <= Re_cri_high) ]
 transition_Re = np.concatenate([[Re_lam_high],transition_Re,[Re_cri_high]])
-line, = plt.plot(transition_Re, 64/transition_Re, lw=1)
+line, = plt.plot(transition_Re, 64/transition_Re, lw=1, ls='--')
 
 # Plot f(Re,rr) Moody lines for turbulent flow
 turbulent_Re = Re[ Re >= Re_trb_min ]
@@ -188,7 +188,7 @@ for thisrr in rr:
 
 # Boundary between turbulence and completely developed turbulence
 Turb_Boundary = (1.14-2*np.log10(3500/turbulent_Re))**-2
-line, = ax.plot(turbulent_Re, Turb_Boundary, lw=1)
+line, = ax.plot(turbulent_Re, Turb_Boundary, lw=1, ls='--')
 
 # Draw a rectangle above critical zone
 ax.add_patch(
