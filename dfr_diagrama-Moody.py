@@ -47,6 +47,9 @@ def Colebrook_getf_iterate (Re,rr):
 figure_width_in  = 11.692
 figure_height_in = 8.267
 
+# Output file basename
+outputname = "example_plot"
+
 # ---------------------------------------------------
 # Some limit values
 # ---------------------------------------------------
@@ -334,8 +337,8 @@ ax.annotate(Full_Turbulence_label,
 
 # Plotting ...
 plt.show()
-plt.savefig("example_plot.pgf", bbox_inches = 'tight')
-plt.savefig("example_plot.pdf", bbox_inches = 'tight')
+plt.savefig(outputname + '.pgf', bbox_inches = 'tight')
+plt.savefig(outputname + '.pdf', bbox_inches = 'tight')
 
 # ======== Old commands used for tests ========
 # plt.show()
