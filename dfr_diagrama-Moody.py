@@ -17,14 +17,22 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import numpy as np
-# import texfig first to configure Matplotlib's backend
-import texfig
-# then, import PyPlot
+
+import matplotlib as mpl
+mpl.use("pgf")
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.ticker as ticker
 
-
+pgf_with_pdflatex = {
+    "pgf.texsystem": "pdflatex",
+    "pgf.preamble": [
+        r"\usepackage[utf8x]{inputenc}",
+        r"\usepackage[T1]{fontenc}",
+        r"\usepackage{cmbright}",
+    ]
+}
+mpl.rcParams.update(pgf_with_pdflatex)
 
 def Colebrook_getf_iterate (Re,rr):
     f_seed = 0.04
@@ -43,7 +51,6 @@ Re_plotmin = 500
 Re_plotmax = 1e8
 f_plotmin  = 0.008
 f_plotmax  = 0.1
-
 
 # Re limits for laminar zone plot
 Re_lam_low  = Re_plotmin
@@ -121,7 +128,7 @@ CTurbulence_Region_Label_fpos = 6e-2
 # plt.style.use('grayscale')
 
 # Creating the figure object
-fig = texfig.figure()
+fig = plt.figure()
 
 # Set size
 fig.set_size_inches(11.69,8.27)
@@ -325,7 +332,8 @@ ax.annotate(Full_Turbulence_label,
 
 # Plotting ...
 plt.show()
-texfig.savefig("example_plot", bbox_inches = 'tight')
+plt.savefig("example_plot.pgf", bbox_inches = 'tight')
+plt.savefig("example_plot.pdf", bbox_inches = 'tight')
 
 # ======== Old commands used for tests ========
 # plt.show()
