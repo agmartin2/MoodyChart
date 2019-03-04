@@ -42,6 +42,11 @@ def Colebrook_getf_iterate (Re,rr):
         f = ( 2*np.log10(rr/3.7 + 2.51/Re/np.sqrt(f)) )**(-2)
     return f
 
+# Figure size (inches)
+# A4: 8.267x11.692 in
+figure_width_in  = 11.692
+figure_height_in = 8.267
+
 # ---------------------------------------------------
 # Some limit values
 # ---------------------------------------------------
@@ -128,11 +133,8 @@ CTurbulence_Region_Label_fpos = 6e-2
 # plt.style.use('grayscale')
 
 # Creating the figure object
-fig = plt.figure()
-
-# Set size
-fig.set_size_inches(11.69,8.27)
-fig.set_size_inches(9.35,6.62)
+fig = plt.figure(figsize=(figure_width_in,figure_height_in))
+# fig.set_size_inches(11.69,8.27) # A4 size. figsize could have been set this way.
 
 # Get a reference to the coordinate axes object. Important.
 # Some commands need it (can also be done by declaring a single subplot)
