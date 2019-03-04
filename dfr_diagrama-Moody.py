@@ -50,6 +50,9 @@ figure_height_in = 8.267
 # Output file basename
 outputname = "example_plot"
 
+# Color or Monochrome plot
+Monochrome = False
+
 # ---------------------------------------------------
 # Some limit values
 # ---------------------------------------------------
@@ -133,7 +136,8 @@ CTurbulence_Region_Label_fpos = 6e-2
 
 # ======== Now the figure object handling ==================
 
-# plt.style.use('grayscale')
+if Monochrome:
+    plt.style.use('grayscale')
 
 # Creating the figure object
 fig = plt.figure(figsize=(figure_width_in,figure_height_in))
