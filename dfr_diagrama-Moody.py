@@ -233,7 +233,7 @@ for i in xmajor_list:
     xpower = 10**i
     # xmajor_list.append(xpower)
     if xpower >= Re_plotmin:
-        line, = ax.plot([xpower,xpower],[f_plotmin,f_plotmax],linewidth=0.8,color='black')
+        line, = ax.plot([xpower,xpower],[f_plotmin,f_plotmax],linewidth=0.6,color='black')
 
     for j in [2,3,4,5,6,7,8,9]:
         xminor = j*xpower;
@@ -248,7 +248,7 @@ for i in xmajor_list:
     for j in [1.2,1.4,1.6,1.8,2.2,2.4,2.6,2.8,3.5,4.5,5.5,6.5]:
         xminor = j*xpower;
         if ( (xminor >= Re_plotmin) & (xminor <= Re_plotmax) ):
-            line, = ax.plot([xminor,xminor],[f_plotmin,f_plotmax],linewidth=0.1,color='black')
+            line, = ax.plot([xminor,xminor],[f_plotmin,f_plotmax],linewidth=0.05,color='black')
 
 ax.xaxis.set_minor_locator(ticker.FixedLocator(np.asarray(xminor_list)))
 ax.xaxis.set_minor_formatter(ticker.FixedFormatter(xminor_tags))
@@ -262,7 +262,7 @@ yminor_tags = []
 for i in range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax)))+1):
     ymajor = 10**i
     if ymajor >= f_plotmin:
-        line, = ax.plot([Re_plotmin,Re_plotmax],[ymajor,ymajor],linewidth=0.8,color='black')
+        line, = ax.plot([Re_plotmin,Re_plotmax],[ymajor,ymajor],linewidth=0.6,color='black')
 
     for j in [1.5,2,3,4,5,6,7,8,9]:
         yminor = j*ymajor
@@ -276,7 +276,7 @@ for i in range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax
               4.8,4.9,5.2,5.4,5.6,5.8,6.2,6.4,6.6,6.8,7.2,7.4,7.6,7.8,8.5,9.5]:
         yminor = j*ymajor;
         if ( (yminor >= f_plotmin) & (yminor <= f_plotmax) ):
-            line, = ax.plot([Re_plotmin,Re_plotmax],[yminor,yminor],linewidth=0.1,color='black')
+            line, = ax.plot([Re_plotmin,Re_plotmax],[yminor,yminor],linewidth=0.05,color='black')
 
 ax.yaxis.set_minor_locator(ticker.FixedLocator(np.asarray(yminor_list)))
 ax.yaxis.set_minor_formatter(ticker.FixedFormatter(yminor_tags))
