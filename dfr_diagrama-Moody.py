@@ -130,10 +130,10 @@ else:
     Full_Turbulence_label = "Complete turbulence"
 
 # Vertical location of some arrows and labels
-Flow_Region_Arrow_fpos = 9e-3
-Flow_Region_Label_fpos = 9.1e-3
-CTurbulence_Region_Arrow_fpos = 6e-2
-CTurbulence_Region_Label_fpos = 6e-2
+Flow_Region_Arrow_fpos = 9.2e-3
+Flow_Region_Label_fpos = 9.2e-3
+CTurbulence_Region_Arrow_fpos = 6.1e-2
+CTurbulence_Region_Label_fpos = 6.1e-2
 
 # ======== Now the figure object handling ==================
 
