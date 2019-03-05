@@ -295,6 +295,7 @@ ax.annotate(Laminar_Region_label,
             xytext=(np.sqrt(Re_lam_low*Re_cri_low),Flow_Region_Label_fpos),
             horizontalalignment='center',
             verticalalignment='bottom',
+            backgroundcolor='white',
             fontsize=8,
 )
 
@@ -310,6 +311,7 @@ ax.annotate(Critical_Region_label,
             xytext=(np.sqrt(Re_cri_low*Re_cri_high),Flow_Region_Label_fpos),
             horizontalalignment='center',
             verticalalignment='bottom',
+            backgroundcolor='white',
             fontsize=8,
 )
 
@@ -320,6 +322,7 @@ ax.annotate(Turbulent_Region_label,
             horizontalalignment='center',
             verticalalignment='center',
             fontsize=8,
+            backgroundcolor='white',
             arrowprops=dict(facecolor='black',
                             arrowstyle="->",
                             linewidth=0.3)
@@ -337,6 +340,7 @@ ax.annotate(Full_Turbulence_label,
             xytext=(np.sqrt(1e5*Re_plotmax),CTurbulence_Region_Label_fpos),
             horizontalalignment='center',
             verticalalignment='bottom',
+            backgroundcolor='white',
             fontsize=8,
 )
 
