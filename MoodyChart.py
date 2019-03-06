@@ -28,28 +28,25 @@ def Colebrook_getf_iterate (Re,rr):
         f = ( 2*np.log10(rr/3.7 + 2.51/Re/np.sqrt(f)) )**(-2)
     return f
 
-def MoodyChart (*args,**kwargs):
-
-    # Figure size (inches)
-    # A4: 8.267x11.692 in
-    figure_width_in  = 11.692
-    figure_height_in = 8.267
-
-    # Color or Monochrome plot
-    Monochrome = False
-
-    # Debug option
-    Debug = False
+def MoodyChart (
+        # Figure size (inches)
+        # A4: 8.267x11.692 in
+        figure_width_in  = 11.692,
+        figure_height_in = 8.267,
+        # Re limits in plot
+        Re_plotmin = 500,
+        Re_plotmax = 1e8,
+        f_plotmin  = 0.008,
+        f_plotmax  = 0.1,
+        lang = "en",                # Set language for labels
+        Monochrome = False,         # Color or Monochrome plot
+        Debug = False,              # Debug option
+        *args,
+        **kwargs):
 
     # ---------------------------------------------------
     # Some limit values
     # ---------------------------------------------------
-
-    # Re limits in plot
-    Re_plotmin = 500
-    Re_plotmax = 1e8
-    f_plotmin  = 0.008
-    f_plotmax  = 0.1
 
     # Re limits for laminar zone plot
     Re_lam_low  = Re_plotmin
@@ -94,9 +91,6 @@ def MoodyChart (*args,**kwargs):
         [1.2e-1, 1],
         [1.5e-1, 1]
     ]
-
-    # Set language for labels
-    lang = "en"
 
     # The different labels for supported languages.
     if lang == "es":
