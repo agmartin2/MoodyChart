@@ -320,7 +320,7 @@ def MoodyChart (
     # Fully developed turbulence region
     ax.annotate("",
                 xy = (1e5,CTurbulence_Region_Arrow_fpos),
-                    xytext=(Re_plotmax,CTurbulence_Region_Arrow_fpos),
+                xytext=(Re_plotmax,CTurbulence_Region_Arrow_fpos),
                 arrowprops=dict(facecolor='black',
                                 arrowstyle="<->",
                                 linewidth=0.3))
