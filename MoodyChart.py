@@ -125,16 +125,17 @@ def MoodyChart (
     fig = plt.figure(figsize=(figure_width_in,figure_height_in))
     # fig.set_size_inches(11.69,8.27) # A4 size. figsize could have been set this way.
 
-    # Get a reference to the coordinate axes object. Important.
-    # Some commands need it (can also be done by declaring a single subplot)
-    ax = plt.gca()
-
+    # Set plot scale type after figure object is created. Needs plt.{x,y}scale
     plt.xscale('log')
     plt.yscale('log')
 
-    # Set plot limits
+    # Set plot limits after figure object is created. Needs plt.{x,y}lim
     plt.xlim(Re_plotmin,Re_plotmax)
     plt.ylim(f_plotmin,f_plotmax)
+
+    # Get a reference to the coordinate axes object. Important.
+    # Some commands need it (can also be done by declaring a single subplot)
+    ax = plt.gca()
 
     #### ------- Draw hatch and axis labels for underlying grid --------
 
