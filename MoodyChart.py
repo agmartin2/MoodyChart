@@ -118,8 +118,7 @@ def MoodyChart (
 
     # ======== Now the figure object handling ==================
 
-    if Monochrome:
-        plt.style.use('grayscale')
+    if Monochrome: plt.style.use('grayscale')
 
     # Creating the figure object
     fig = plt.figure(figsize=(figure_width_in,figure_height_in))
