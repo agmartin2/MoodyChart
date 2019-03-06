@@ -229,12 +229,12 @@ def MoodyChart (
     # Plot f(Re) Moody lines for laminar flow
     laminar_Re = Re[ Re <= Re_lam_high ]
     laminar_Re = np.concatenate([laminar_Re,[Re_lam_high]])
-    line, = plt.plot(laminar_Re, 64/laminar_Re, lw=1)
+    line, = ax.plot(laminar_Re, 64/laminar_Re, lw=1)
 
     # Plot f(Re) Moody lines as for laminar flow in transition zone
     transition_Re = Re[ (Re >= Re_lam_high)  & (Re <= Re_cri_high) ]
     transition_Re = np.concatenate([[Re_lam_high],transition_Re,[Re_cri_high]])
-    line, = plt.plot(transition_Re, 64/transition_Re, lw=1, ls='--')
+    line, = ax.plot(transition_Re, 64/transition_Re, lw=1, ls='--')
 
     # Plot f(Re,rr) Moody lines for turbulent flow
     turbulent_Re = Re[ Re >= Re_trb_min ]
@@ -248,7 +248,7 @@ def MoodyChart (
 
         if my_Re.size > 0:
             Moody_line = Colebrook_getf_iterate(my_Re,my_rr)
-            line, = plt.plot(my_Re, Moody_line, lw=1)
+            line, = ax.plot(my_Re, Moody_line, lw=1)
             # f value for Re_plotmax in this rr line
             Moody_line_f4Re_max = Moody_line[-1]
             if ( ( Moody_line_f4Re_max > f_plotmin ) &
