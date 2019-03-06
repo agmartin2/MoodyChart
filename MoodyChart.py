@@ -284,8 +284,10 @@ def MoodyChart (
                 xytext=(np.sqrt(Re_lam_low*Re_cri_low),Flow_Region_Label_fpos),
                 horizontalalignment='center',
                 verticalalignment='center',
-                backgroundcolor='white',
                 fontsize=8,
+                bbox=dict(boxstyle='square,pad=0.3',
+                          fc='white',
+                          ec='none'),
     )
 
     # Critical region for transition to laminar to turbulent flow
@@ -300,8 +302,10 @@ def MoodyChart (
                 xytext=(np.sqrt(Re_cri_low*Re_cri_high),Flow_Region_Label_fpos),
                 horizontalalignment='center',
                 verticalalignment='center',
-                backgroundcolor='white',
                 fontsize=8,
+                bbox=dict(boxstyle='square,pad=0.3',
+                          fc='white',
+                          ec='none'),
     )
 
     # Turbulent flow region
@@ -311,10 +315,12 @@ def MoodyChart (
                 horizontalalignment='center',
                 verticalalignment='center',
                 fontsize=8,
-                backgroundcolor='white',
                 arrowprops=dict(facecolor='black',
                                 arrowstyle="->",
-                                linewidth=0.3)
+                                linewidth=0.3),
+                bbox=dict(boxstyle='square,pad=0.3',
+                          fc='white',
+                          ec='none'),
     )
 
     # Fully developed turbulence region
@@ -329,8 +335,10 @@ def MoodyChart (
                 xytext=(np.sqrt(1e5*Re_plotmax),CTurbulence_Region_Label_fpos),
                 horizontalalignment='center',
                 verticalalignment='center',
-                backgroundcolor='white',
                 fontsize=8,
+                bbox=dict(boxstyle='square,pad=0.3',
+                          fc='white',
+                          ec='none'),
     )
 
     return fig
