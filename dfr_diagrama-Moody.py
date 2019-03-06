@@ -54,6 +54,9 @@ outputname = "example_plot"
 # Color or Monochrome plot
 Monochrome = False
 
+# Debug option
+Debug = False
+
 # ---------------------------------------------------
 # Some limit values
 # ---------------------------------------------------
@@ -274,7 +277,7 @@ for thisrr in rr:
              ( my_rr != 0 )):
             my_rr_exp = np.floor(np.log10(my_rr)) # The exponent
             my_rr_num = my_rr/(10**my_rr_exp)     # The number (significand)
-            print my_rr, my_rr_num, my_rr_exp
+            if Debug: print my_rr, my_rr_num, my_rr_exp
             if my_rr_num == 1:
                 my_rr_string = "$10^{%d}$" % my_rr_exp
             else:
