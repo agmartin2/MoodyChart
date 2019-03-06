@@ -155,6 +155,9 @@ plt.yscale('log')
 plt.xlim(Re_plotmin,Re_plotmax)
 plt.ylim(f_plotmin,f_plotmax)
 
+#### ------- Draw hatch and axis labels for underlying grid --------
+
+# Write axis labels
 ax.set_xlabel(x1_label)
 ax.set_ylabel(y1_label)
 ax.text(2*Re_plotmax,np.sqrt(f_plotmin*f_plotmax),
@@ -162,50 +165,6 @@ ax.text(2*Re_plotmax,np.sqrt(f_plotmin*f_plotmax),
         fontsize=10,
         VerticalAlignment="center",
         rotation=90)
-
-# Plot f(Re) Moody lines for laminar flow
-laminar_Re = Re[ Re <= Re_lam_high ]
-laminar_Re = np.concatenate([laminar_Re,[Re_lam_high]])
-line, = plt.plot(laminar_Re, 64/laminar_Re, lw=1)
-
-# Plot f(Re) Moody lines as for laminar flow in transition zone
-transition_Re = Re[ (Re >= Re_lam_high)  & (Re <= Re_cri_high) ]
-transition_Re = np.concatenate([[Re_lam_high],transition_Re,[Re_cri_high]])
-line, = plt.plot(transition_Re, 64/transition_Re, lw=1, ls='--')
-
-# Plot f(Re,rr) Moody lines for turbulent flow
-turbulent_Re = Re[ Re >= Re_trb_min ]
-turbulent_Re = np.concatenate([[Re_trb_min],turbulent_Re])
-for thisrr in rr:
-    my_rr = thisrr[0]
-    if thisrr[1] == 1:
-        my_Re = turbulent_Re
-    else:
-        my_Re = turbulent_Re[ turbulent_Re >= Re_trb_min*thisrr[1] ]
-
-    if my_Re.size > 0:
-        Moody_line = Colebrook_getf_iterate(my_Re,my_rr)
-        line, = plt.plot(my_Re, Moody_line, lw=1)
-        # f value for Re_plotmax in this rr line
-        Moody_line_f4Re_max = Moody_line[-1]
-        if ( ( Moody_line_f4Re_max > f_plotmin ) &
-             ( Moody_line_f4Re_max < f_plotmax) &
-             ( my_rr != 0 )):
-            my_rr_exp = np.floor(np.log10(my_rr)) # The exponent
-            my_rr_num = my_rr/(10**my_rr_exp)     # The number (significand)
-            print my_rr, my_rr_num, my_rr_exp
-            if my_rr_num == 1:
-                my_rr_string = "$10^{%d}$" % my_rr_exp
-            else:
-                my_rr_string = "$%g\\!\\times\\!10^{%d}$" % (my_rr_num, my_rr_exp)
-
-            ax.text(1.1*Re_plotmax,Moody_line.min(),my_rr_string,fontsize=6)
-    else:
-        print "Skipping relative roughness: ", my_rr
-
-# Boundary between turbulence and completely developed turbulence
-Turb_Boundary = (1.14-2*np.log10(3500/turbulent_Re))**-2
-line, = ax.plot(turbulent_Re, Turb_Boundary, lw=1, ls='--')
 
 # Draw a rectangle above critical zone
 ax.add_patch(
@@ -218,6 +177,8 @@ ax.add_patch(
         edgecolor="black"
     )
 )
+
+#### -------- Draw the underlying grid --------------------
 
 # Draw minor ticks smaller
 ax.tick_params(which='minor',labelsize=6)
@@ -281,7 +242,53 @@ for i in range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax
 ax.yaxis.set_minor_locator(ticker.FixedLocator(np.asarray(yminor_list)))
 ax.yaxis.set_minor_formatter(ticker.FixedFormatter(yminor_tags))
 
-# Annotate regions with different flow types.
+#### -------  Draw Moody chart lines --------------
+
+# Plot f(Re) Moody lines for laminar flow
+laminar_Re = Re[ Re <= Re_lam_high ]
+laminar_Re = np.concatenate([laminar_Re,[Re_lam_high]])
+line, = plt.plot(laminar_Re, 64/laminar_Re, lw=1)
+
+# Plot f(Re) Moody lines as for laminar flow in transition zone
+transition_Re = Re[ (Re >= Re_lam_high)  & (Re <= Re_cri_high) ]
+transition_Re = np.concatenate([[Re_lam_high],transition_Re,[Re_cri_high]])
+line, = plt.plot(transition_Re, 64/transition_Re, lw=1, ls='--')
+
+# Plot f(Re,rr) Moody lines for turbulent flow
+turbulent_Re = Re[ Re >= Re_trb_min ]
+turbulent_Re = np.concatenate([[Re_trb_min],turbulent_Re])
+for thisrr in rr:
+    my_rr = thisrr[0]
+    if thisrr[1] == 1:
+        my_Re = turbulent_Re
+    else:
+        my_Re = turbulent_Re[ turbulent_Re >= Re_trb_min*thisrr[1] ]
+
+    if my_Re.size > 0:
+        Moody_line = Colebrook_getf_iterate(my_Re,my_rr)
+        line, = plt.plot(my_Re, Moody_line, lw=1)
+        # f value for Re_plotmax in this rr line
+        Moody_line_f4Re_max = Moody_line[-1]
+        if ( ( Moody_line_f4Re_max > f_plotmin ) &
+             ( Moody_line_f4Re_max < f_plotmax) &
+             ( my_rr != 0 )):
+            my_rr_exp = np.floor(np.log10(my_rr)) # The exponent
+            my_rr_num = my_rr/(10**my_rr_exp)     # The number (significand)
+            print my_rr, my_rr_num, my_rr_exp
+            if my_rr_num == 1:
+                my_rr_string = "$10^{%d}$" % my_rr_exp
+            else:
+                my_rr_string = "$%g\\!\\times\\!10^{%d}$" % (my_rr_num, my_rr_exp)
+
+            ax.text(1.1*Re_plotmax,Moody_line.min(),my_rr_string,fontsize=6)
+    else:
+        print "Skipping relative roughness: ", my_rr
+
+# Plot boundary between turbulence and completely developed turbulence
+Turb_Boundary = (1.14-2*np.log10(3500/turbulent_Re))**-2
+line, = ax.plot(turbulent_Re, Turb_Boundary, lw=1, ls='--')
+
+####  -------- Annotate regions with different flow types -----
 
 # Laminar flow region
 ax.annotate("",
