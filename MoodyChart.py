@@ -39,7 +39,7 @@ def MoodyChart (
         f_plotmin  = 0.008,
         f_plotmax  = 0.1,
         lang = "en",                # Set language for labels
-        Monochrome = False,         # Color or Monochrome plot
+        color = "color",            # Plot color (mono|color|octave)
         Debug = False,              # Debug option
         *args,
         **kwargs):
@@ -118,8 +118,6 @@ def MoodyChart (
 
     # ======== Now the figure object handling ==================
 
-    if Monochrome: plt.style.use('grayscale')
-
     # Creating the figure object
     fig = plt.figure(figsize=(figure_width_in,figure_height_in))
     # fig.set_size_inches(11.69,8.27) # A4 size. figsize could have been set this way.
@@ -135,6 +133,17 @@ def MoodyChart (
     # Get a reference to the coordinate axes object. Important.
     # Some commands need it (can also be done by declaring a single subplot)
     ax = plt.gca()
+
+    # Select color of Moody lines. Underlying log-log plot is always black.
+    if color == "mono":
+        # Plot Moody lines black
+        ax.set_prop_cycle(plt.cycler(color=['k']))
+    elif color == "octave":
+        # Use a minimal color cycle for Moody lines (just blue)
+        ax.set_prop_cycle(plt.cycler(color=['b']))
+    elif color != "color":
+        print "Unknown color \"%s\". Using default color cycle." % color
+    # Otherwise use usual color cycle.
 
     #### ------- Draw hatch and axis labels for underlying grid --------
 
