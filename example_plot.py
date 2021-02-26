@@ -4,11 +4,7 @@ mpl.use("pgf")
 pgf_with_pdflatex = {
     "pgf.texsystem": "pdflatex",
     "font.family": "serif",
-    "pgf.preamble": [
-        r"\usepackage[utf8x]{inputenc}",
-        r"\usepackage[T1]{fontenc}",
-        r"\usepackage{times}",
-    ]
+    "pgf.preamble": r"\usepackage[utf8x]{inputenc} \usepackage[T1]{fontenc} \usepackage{times}"
 }
 mpl.rcParams.update(pgf_with_pdflatex)
 
