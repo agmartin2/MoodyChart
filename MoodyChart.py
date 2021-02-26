@@ -176,8 +176,8 @@ def MoodyChart (
 
     # Ploting vertical grid and Re labels
     xmajor_list = range(int(np.floor(np.log10(Re_plotmin))),int(np.ceil(np.log10(Re_plotmax)))+1)
-    ax.xaxis.set_major_locator(ticker.FixedLocator(map(lambda x: 10**x, xmajor_list)))
-    ax.xaxis.set_major_formatter(ticker.FixedFormatter(map(lambda x: format("$10^{%s}$" % x), xmajor_list)))
+    ax.xaxis.set_major_locator(ticker.FixedLocator(list(map(lambda x: 10**x, xmajor_list))))
+    ax.xaxis.set_major_formatter(ticker.FixedFormatter(list(map(lambda x: format("$10^{%s}$" % x), xmajor_list))))
     # xmajor_list = np.array([])
     xminor_list = []
     xminor_tags = []
@@ -204,12 +204,12 @@ def MoodyChart (
                 line, = ax.plot([xminor,xminor],[f_plotmin,f_plotmax],linewidth=0.05,color='black')
 
     ax.xaxis.set_minor_locator(ticker.FixedLocator(np.asarray(xminor_list)))
-    ax.xaxis.set_minor_formatter(ticker.FixedFormatter(map(lambda x: format("${%s}$" % x), xminor_tags)))
+    ax.xaxis.set_minor_formatter(ticker.FixedFormatter(list(map(lambda x: format("${%s}$" % x), xminor_tags))))
 
     # Ploting horizontal grid and f labels
     ymajor_list = range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax)))+1)
-    ax.yaxis.set_major_locator(ticker.FixedLocator(map(lambda x: 10**x, ymajor_list)))
-    ax.yaxis.set_major_formatter(ticker.FixedFormatter(map(lambda x: format("$10^{%s}$" % x), ymajor_list)))
+    ax.yaxis.set_major_locator(ticker.FixedLocator(list(map(lambda x: 10**x, ymajor_list))))
+    ax.yaxis.set_major_formatter(ticker.FixedFormatter(list(map(lambda x: format("$10^{%s}$" % x), ymajor_list))))
     yminor_list = []
     yminor_tags = []
     for i in range(int(np.floor(np.log10(f_plotmin))),int(np.ceil(np.log10(f_plotmax)))+1):
@@ -232,7 +232,7 @@ def MoodyChart (
                 line, = ax.plot([Re_plotmin,Re_plotmax],[yminor,yminor],linewidth=0.05,color='black')
 
     ax.yaxis.set_minor_locator(ticker.FixedLocator(np.asarray(yminor_list)))
-    ax.yaxis.set_minor_formatter(ticker.FixedFormatter(map(lambda x: format("${%s}$" % x), yminor_tags)))
+    ax.yaxis.set_minor_formatter(ticker.FixedFormatter(list(map(lambda x: format("${%s}$" % x), yminor_tags))))
 
     #### -------  Draw Moody chart lines --------------
 
