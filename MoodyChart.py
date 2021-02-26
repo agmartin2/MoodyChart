@@ -1,6 +1,6 @@
 # MoodyChart.py - A Python module to play with Moody charts
 #
-# Copyright (C) 2018-2019 Agustin Martin Domingo <agustin6martin@gmail.com>
+# Copyright (C) 2018-2021 Agustin Martin Domingo <agustin6martin@gmail.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
