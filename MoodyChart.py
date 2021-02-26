@@ -143,7 +143,7 @@ def MoodyChart (
         # Use a minimal color cycle for Moody lines (just blue)
         ax.set_prop_cycle(plt.cycler(color=['b']))
     elif color != "color":
-        print "Unknown color \"%s\". Using default color cycle." % color
+        print ("Unknown color \"%s\". Using default color cycle." % color)
     # Otherwise use usual color cycle.
 
     #### ------- Draw hatch and axis labels for underlying grid --------
@@ -266,7 +266,7 @@ def MoodyChart (
                  ( my_rr != 0 )):
                 my_rr_exp = np.floor(np.log10(my_rr)) # The exponent
                 my_rr_num = my_rr/(10**my_rr_exp)     # The number (significand)
-                if Debug: print my_rr, my_rr_num, my_rr_exp
+                if Debug: print (my_rr, my_rr_num, my_rr_exp)
                 if my_rr_num == 1:
                     my_rr_string = "$10^{%d}$" % my_rr_exp
                 else:
@@ -274,7 +274,7 @@ def MoodyChart (
 
                 ax.text(1.1*Re_plotmax,Moody_line.min(),my_rr_string,fontsize=6)
         else:
-            print "Skipping relative roughness: ", my_rr
+            print ("Skipping relative roughness: ", my_rr)
 
     # Plot boundary between turbulence and completely developed turbulence
     Turb_Boundary = (1.14-2*np.log10(3500/turbulent_Re))**-2
