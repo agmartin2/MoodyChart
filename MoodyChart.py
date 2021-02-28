@@ -154,7 +154,7 @@ def MoodyChart (
     ax.text(2*Re_plotmax,np.sqrt(f_plotmin*f_plotmax),
             y2_label,
             fontsize=10,
-            VerticalAlignment="center",
+            verticalalignment="center",
             rotation=90)
 
     # Draw a rectangle above critical zone
