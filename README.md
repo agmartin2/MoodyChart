@@ -30,7 +30,7 @@ MoodyChart function.
     pgf_with_pdflatex = {
         "pgf.texsystem": "pdflatex",
         "font.family": "serif",
-    	"pgf.preamble": \
+        "pgf.preamble": \
              r"\usepackage[utf8x]{inputenc}" \
              r"\usepackage[T1]{fontenc}" \
              r"\usepackage{times}"
