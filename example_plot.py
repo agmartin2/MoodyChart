@@ -16,8 +16,13 @@ outputname = "example_plot"
 
 import MoodyChart as MC
 
+# Create plot window
+# Options can be passed as plt = MC.MoodyChart(lang="es",f_plotmax=1e-1,...)
 plt = MC.MoodyChart()
 ax  = plt.gca()    # Only needed if something else is to be plotted
+# Plot data passed as two [x1,x2,...],[y1,y2,...] arrays
+# ax.plot([],[],'ro')
+# ax.plot([],[],'bo')
 
 # Plotting ...
 plt.savefig(outputname + '.pgf', bbox_inches = 'tight')
