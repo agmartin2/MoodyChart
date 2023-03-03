@@ -20,6 +20,8 @@ MoodyChart function.
 * `f_plotmax`:  Plot upper limit of friction coefficient.
 * `lang`:       Set language for strings (Only `en` and `es` are
   currently supported).
+* `cz_color':   color for critical zone
+                (valid matplotlib colors, default: "lightgray")
 * `Debug`:      Enable debugging if set to `True`
 
 ### Example of usage

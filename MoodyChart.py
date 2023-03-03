@@ -41,6 +41,7 @@ def MoodyChart (
         f_plotmax  = 0.1,
         lang = "en",                # Set language for labels
         color = "color",            # Plot color (mono|color|octave)
+        cz_color = "lightgray", # Color to mark critical zone
         Debug = False,              # Debug option
         *args,
         **kwargs):
@@ -163,7 +164,7 @@ def MoodyChart (
             (Re_cri_low, f_plotmin),   # (x,y)
             Re_cri_high - Re_cri_low,  # width
             f_plotmax - f_plotmin,     # height
-            facecolor="lightgray",
+            facecolor=cz_color,
             linewidth=0.3,
             edgecolor="black"
         )
